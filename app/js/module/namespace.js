@@ -1,5 +1,3 @@
-/* global chrome, browser */
-// eslint-disable-next-line no-unused-vars
 const webExtension = typeof browser === 'undefined' ? chrome : browser
 
 const asciidoctor = {}
