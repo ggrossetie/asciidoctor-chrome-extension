@@ -1,5 +1,5 @@
 import { getSetting } from './settings.js'
-import Constants from '../constants.js'
+import Constants from './constants.js'
 
 const webExtension = typeof browser === 'undefined' ? chrome : browser
 

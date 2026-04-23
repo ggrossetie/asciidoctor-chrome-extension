@@ -6,7 +6,7 @@ import {
   replaceStylesheetLinkElement
 } from './dom.js'
 import { getRenderingSettings, getSetting } from './settings.js'
-import Constants from '../constants.js'
+import Constants from './constants.js'
 import { getDefaultThemeNames, getThemeName } from './theme.js'
 
 const webExtension = typeof browser === 'undefined' ? chrome : browser

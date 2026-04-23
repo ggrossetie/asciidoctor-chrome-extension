@@ -1,5 +1,6 @@
 (async () => {
-  const src = browser.runtime.getURL("js/asciidocify.js");
-  const contentMain = await import(src);
-  contentMain.init();
-})();
+  const webExtension = typeof browser === 'undefined' ? chrome : browser
+  const src = webExtension.runtime.getURL("js/main.js")
+  const contentMain = await import(src)
+  contentMain.init()
+})()

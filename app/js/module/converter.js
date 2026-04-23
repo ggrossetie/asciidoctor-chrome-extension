@@ -1,4 +1,4 @@
-import asciidoctor, {Extensions} from '../vendor/asciidoctor-native.js'
+import asciidoctor, { Extensions } from '../vendor/asciidoctor-native.js'
 import { md5 } from '../vendor/md5.js'
 
 import { getRenderingSettings, getSetting, isExtensionEnabled } from './settings.js'
@@ -9,21 +9,21 @@ const eqnumValidValues = ['none', 'all', 'ams']
 const Asciidoctor = asciidoctor()
 
 // REMIND: notitle attribute is automatically set when header_footer equals false.
-function showTitle (doc) { return !doc.isAttribute('noheader')}
+function showTitle (doc) { return !doc.isAttribute('noheader') }
 
 /**
  * Is the :source-highlighter: attribute defined ?
  * @param doc
  * @returns {boolean}
  */
-function isSourceHighlighterEnabled (doc) { return doc.isAttribute('source-highlighter')}
+function isSourceHighlighterEnabled (doc) { return doc.isAttribute('source-highlighter') }
 
 /**
  * Is the :stem: attribute defined ?
  * @param doc
  * @returns {boolean}
  */
-function isStemEnabled (doc) {return doc.isAttribute('stem')}
+function isStemEnabled (doc) { return doc.isAttribute('stem') }
 
 export async function convert (url, source) {
   const settings = await getRenderingSettings()
@@ -123,7 +123,7 @@ function getAttributesFromQueryParameters (url) {
 /**
  * Build Asciidoctor options from settings
  */
-export function buildAsciidoctorOptions(settings, url) {
+export function buildAsciidoctorOptions (settings, url) {
   const attributesQueryParameters = getAttributesFromQueryParameters(url)
   const customAttributes = settings.customAttributes
   const safeMode = settings.safeMode
