@@ -1,4 +1,7 @@
 /* global it, describe, afterEach, beforeEach, mocha, chai, mochaOpts, asciidoctor, browser, helper, sinon */
+import Constants from '../../app/js/module/constants.js'
+import { convert } from '../../app/js/module/converter.js'
+import { updateHTML } from '../../app/js/module/page.js'
 // bootstrap
 (async () => {
   let reporter
@@ -21,14 +24,6 @@
   parts.pop()
   const baseDir = parts.join('/')
 
-  const Constants = asciidoctor.browser.constants()
-  const Dom = asciidoctor.browser.dom(document)
-  const Settings = asciidoctor.browser.settings(browser, Constants)
-  const Theme = asciidoctor.browser.theme(browser, Settings, Constants)
-  const Renderer = asciidoctor.browser.renderer(browser, document, Constants, Settings, Dom, Theme)
-  const Converter = asciidoctor.browser.converter(browser, Constants, Settings)
-  const Loader = asciidoctor.browser.loader(browser, document, document.location, window.XMLHttpRequest, Settings, Renderer)
-
   describe('Custom script', () => {
     afterEach(() => {
       helper.reset()
@@ -48,8 +43,8 @@
       if (contentElement) {
         contentElement.remove()
       }
-      const response = await Converter.convert(window.location.toString(), '= Hello world')
-      await Renderer.updateHTML(response)
+      const response = await convert(window.location.toString(), '= Hello world')
+      await updateHTML(response)
       // the custom script must be present in <head>
       expect(Array.from(document.head.children).find(element => element.id === 'asciidoctor-browser-custom-js').innerText).to.equal('document.body.appendChild(document.createElement(\'strong\'));')
       // the rendering phase will remove the <b> element created by the custom JavaScript (because the script runs before)

@@ -282,7 +282,7 @@
         "js/module/settings.js",
         "js/module/theme.js",
         "js/vendor/md5.js",
-        "js/vendor/asciidoctor-native.js",
+        "js/vendor/asciidoctor.js",
         "js/main.js",
         "js/mathjax/config.js",
         "js/mathjax/typeset.js",

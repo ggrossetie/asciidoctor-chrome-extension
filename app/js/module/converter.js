@@ -1,4 +1,4 @@
-import asciidoctor, { Extensions } from '../vendor/asciidoctor-native.js'
+import { load, Extensions } from '../vendor/asciidoctor.js'
 import { md5 } from '../vendor/md5.js'
 
 import { getRenderingSettings, getSetting, isExtensionEnabled } from './settings.js'
@@ -6,7 +6,6 @@ import executeRequest, { isHtmlContentType } from './fetch.js'
 
 const webExtension = typeof browser === 'undefined' ? chrome : browser
 const eqnumValidValues = ['none', 'all', 'ams']
-const Asciidoctor = asciidoctor()
 
 // REMIND: notitle attribute is automatically set when header_footer equals false.
 function showTitle (doc) { return !doc.isAttribute('noheader') }
@@ -28,7 +27,7 @@ function isStemEnabled (doc) { return doc.isAttribute('stem') }
 export async function convert (url, source) {
   const settings = await getRenderingSettings()
   const options = buildAsciidoctorOptions(settings, url)
-  const doc = await Asciidoctor.load(source, options)
+  const doc = await load(source, options)
   if (showTitle(doc)) {
     doc.removeAttribute('notitle')
     doc.setAttribute('showtitle')

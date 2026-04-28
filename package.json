@@ -3,8 +3,7 @@
   "description": "Render AsciiDoc (.ad, .adoc, .asc, .asciidoc) as HTML inside your browser!",
   "version": "3.0.1",
   "engines": {
-    "node": ">=18",
-    "npm": ">=8.0.0"
+    "node": ">=24"
   },
   "scripts": {
     "test": "node spec/browser/run.js",
@@ -26,11 +25,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@asciidoctor/core": "2.2.6",
-    "@asciidoctor/native": "file:../asciidoctor.js/packages/native",
+    "@asciidoctor/core": "file:../asciidoctor.js/packages/core",
     "addons-linter": "7.11.0",
     "archiver": "5.3.1",
-    "asciidoctor-kroki": "0.17.0",
     "bestikk-fs": "1.0.0",
     "bestikk-log": "0.1.0",
     "bulma": "0.9.4",
@@ -57,6 +54,6 @@
     "asciidoctor"
   ],
   "volta": {
-    "node": "22.14.0"
+    "node": "24.15.0"
   }
 }
